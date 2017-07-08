@@ -44,8 +44,9 @@ public class ProductServiceImpl implements ProductService{
 	public String addProduct(ProductDTO productDTO) {
 		// TODO Auto-generated method stub
 		try {
-			mongoTemplate.insert(ConvertToModel.convertToModel(productDTO));
-			return productDTO.getId();
+			Product product = ConvertToModel.convertToModel(productDTO);
+			mongoTemplate.insert(product);
+			return product.getId();
 		}catch(Exception e) {
 			e.printStackTrace();
 			logger.error(e.toString());

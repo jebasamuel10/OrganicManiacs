@@ -4,8 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.data.mongodb.core.WriteConcernResolver;
+import org.springframework.data.mongodb.core.convert.DbRefResolver;
+import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.convert.MongoConverter;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
@@ -19,7 +26,7 @@ public class MongoConfigBean {
 	@Autowired
 	private Environment env;
 	
-	public @Bean Mongo mongo() throws Exception {
+	public @Bean MongoClient mongo() throws Exception {
 		MongoClientOptions.Builder optionsBuilder = new MongoClientOptions.Builder();
 	    MongoClientOptions options = optionsBuilder.build();
         return new MongoClient(env.getProperty(CommonConstants.MONGO_HOST_KEY),options);

@@ -10,6 +10,7 @@ public class ConvertToDTO {
 
 	 public static List<ProductDTO> convertToDTOs(List<Product> models) {
 	    	List<ProductDTO> productDTOList = new ArrayList();
+	    	System.out.println("models"+models);
 	    	for (Product product : models) {
 	    		productDTOList.add(convertToDTO(product));
 			}

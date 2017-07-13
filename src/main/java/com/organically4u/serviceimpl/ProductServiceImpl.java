@@ -1,5 +1,8 @@
 package com.organically4u.serviceimpl;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.organically4u.dto.converter.ConvertToDTO;
 import com.organically4u.model.Product;
 import com.organically4u.model.converter.ConvertToModel;
@@ -24,8 +31,19 @@ public class ProductServiceImpl implements ProductService{
 	private static Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 	@Autowired
 	private MongoTemplate mongoTemplate;
+	@Autowired
+	private GridFsTemplate gridFsTemplate;
 	
-	
+	public GridFsTemplate getGridFsTemplate() {
+		return gridFsTemplate;
+	}
+
+
+	public void setGridFsTemplate(GridFsTemplate gridFsTemplate) {
+		this.gridFsTemplate = gridFsTemplate;
+	}
+
+
 	public MongoTemplate getMongoTemplate() {
 		return mongoTemplate;
 	}
@@ -61,9 +79,22 @@ public class ProductServiceImpl implements ProductService{
 		WriteResult writeResult = mongoTemplate.remove(getProduct(id));
 		return writeResult.wasAcknowledged() ? id : null;
 	}
+	
 	public Product getProduct(String id){
 		Query query = new Query();
 		query.addCriteria(Criteria.where("_id").is(id));
 		return mongoTemplate.findOne(query,Product.class);
+	}
+	
+	public String storeProductImage() throws FileNotFoundException {
+		InputStream inputStream = new FileInputStream("src/main/resources/images/test.jpg"); 
+		String id = gridFsTemplate.store(inputStream, "test.jpg", "image/jpg", new BasicDBObject("id","image1")).getId().toString();
+		return id;
+	}
+	
+	public GridFSDBFile retrieveProductImage() throws FileNotFoundException {
+		String id = "5967b1094aabce03ac818d68";
+		GridFSDBFile gridFsdbFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
+		return gridFsdbFile;
 	}
 }

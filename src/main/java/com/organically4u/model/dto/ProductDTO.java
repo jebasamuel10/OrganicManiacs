@@ -1,11 +1,19 @@
 package com.organically4u.model.dto;
 
+import java.util.Date;
+
 public class ProductDTO {
 	
 	String Id;
 	String productName;
 	String prodShotDesc;
 	String prodLongDesc;
+	String BrandName;
+	String CategoryName;
+	Date expriyDate;
+	Date mfdate;
+	
+	
 	
 	public String getId() {
 		return Id;

@@ -16,7 +16,6 @@ import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.organically4u.dto.converter.ConvertToDTO;
@@ -24,6 +23,7 @@ import com.organically4u.model.Product;
 import com.organically4u.model.converter.ConvertToModel;
 import com.organically4u.model.dto.ProductDTO;
 import com.organically4u.service.ProductService;
+import com.organically4u.util.Converter;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -33,6 +33,9 @@ public class ProductServiceImpl implements ProductService{
 	private MongoTemplate mongoTemplate;
 	@Autowired
 	private GridFsTemplate gridFsTemplate;
+	@Autowired
+	private Converter converter;
+	
 	
 	public GridFsTemplate getGridFsTemplate() {
 		return gridFsTemplate;
@@ -55,14 +58,21 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List<ProductDTO> getAllProducts(){
-		return ConvertToDTO.convertToDTOs(mongoTemplate.findAll(Product.class));
+		
+		List<Product> productlist = new ArrayList<Product>();
+		List<ProductDTO> productDTOlist = new ArrayList<ProductDTO>();
+		productlist.addAll(mongoTemplate.findAll(Product.class));
+		for(Product product :productlist){
+			productDTOlist.add((ProductDTO)converter.convert(Product.class, product ));
+		}
+		return productDTOlist;
 	}
 
 	@Override
 	public String addProduct(ProductDTO productDTO) {
 		// TODO Auto-generated method stub
 		try {
-			Product product = ConvertToModel.convertToModel(productDTO);
+			Product product = (Product)converter.convert(ProductDTO.class, productDTO );
 			mongoTemplate.insert(product);
 			return product.getId();
 		}catch(Exception e) {

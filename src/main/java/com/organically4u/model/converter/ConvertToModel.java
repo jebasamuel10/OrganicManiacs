@@ -8,7 +8,7 @@ import com.organically4u.model.dto.ProductDTO;
 
 public class ConvertToModel {
 
-	 public static List<Product> convertToModel(List<ProductDTO> dtoList) {
+	/* public static List<Product> convertToModel(List<ProductDTO> dtoList) {
 	    	List<Product> productList = new ArrayList();
 	    	for (ProductDTO productDTO : dtoList) {
 	    		productList.add(convertToModel(productDTO));
@@ -23,5 +23,5 @@ public class ConvertToModel {
 		 product.setProductLongDesc(model.getProdLongDesc());
 		 product.setProductShortDesc(model.getProdShotDesc());
 	     return product;
-	    }
+	    }*/
 }

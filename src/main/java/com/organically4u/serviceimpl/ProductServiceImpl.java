@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService{
 		List<ProductDTO> productDTOlist = new ArrayList<ProductDTO>();
 		productlist.addAll(mongoTemplate.findAll(Product.class));
 		for(Product product :productlist){
-			productDTOlist.add((ProductDTO)converter.convert(Product.class, product ));
+			productDTOlist.add((ProductDTO)converter.convert(ProductDTO.class, product ));
 		}
 		return productDTOlist;
 	}
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService{
 	public String addProduct(ProductDTO productDTO) {
 		// TODO Auto-generated method stub
 		try {
-			Product product = (Product)converter.convert(ProductDTO.class, productDTO );
+			Product product = (Product)converter.convert(Product.class, productDTO );
 			mongoTemplate.insert(product);
 			return product.getId();
 		}catch(Exception e) {

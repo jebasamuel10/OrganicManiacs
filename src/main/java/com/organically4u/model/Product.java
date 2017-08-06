@@ -135,3 +135,4 @@ public class Product {
 		this.mfdate = mfdate;
 	}
 }
+

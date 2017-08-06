@@ -30,10 +30,9 @@ public class PostingAdminResource {
 	
 	
 	//Product CRUD Operations -Start
-	@PostMapping(value="/addProduct",consumes="application/json")
+	@RequestMapping(value="/addProduct",consumes="application/json")
 	public String addProduct(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
-		System.out.println("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);
 	}
 	
@@ -44,7 +43,7 @@ public class PostingAdminResource {
 	}
 	
 	
-	@PostMapping(value="/updateProdDtl",consumes="application/json")
+	@RequestMapping(value="/updateProdDtl",consumes="application/json")
 	public String updateProductDetails(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);
@@ -53,7 +52,7 @@ public class PostingAdminResource {
 	//Product CRUD Operations -End
 	
 	//Category CRUD Operations -Start
-	@PostMapping(value="/addCategory",consumes="application/json")
+	@RequestMapping(value="/addCategory",consumes="application/json")
 	public String addCategory(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);
@@ -66,7 +65,7 @@ public class PostingAdminResource {
 	}
 	
 	
-	@PostMapping(value="/updateCategory",consumes="application/json")
+	@RequestMapping(value="/updateCategory",consumes="application/json")
 	public String updateCategory(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);
@@ -76,7 +75,7 @@ public class PostingAdminResource {
 	
 	
 	//SourceFrom CRUD Operations -Start
-	@PostMapping(value="/addSrcFrom",consumes="application/json")
+	@RequestMapping(value="/addSrcFrom",consumes="application/json")
 	public String addSourceFrom(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);
@@ -89,7 +88,7 @@ public class PostingAdminResource {
 	}
 	
 	
-	@PostMapping(value="/updateSrcFrom",consumes="application/json")
+	@RequestMapping(value="/updateSrcFrom",consumes="application/json")
 	public String updateSourceFrom(@RequestBody ProductDTO productDTO){
 		log.debug("Add:"+productDTO.toString());
 		return productService.addProduct(productDTO);

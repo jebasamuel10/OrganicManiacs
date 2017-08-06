@@ -23,7 +23,7 @@ public class ExceptionController {
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
 		ErrorResponse error = new ErrorResponse();
 		error.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		error.setErrorMessage("Please contact your administrator");
+		error.setErrorMessage(ex.getMessage());
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.OK);
 	}
 	

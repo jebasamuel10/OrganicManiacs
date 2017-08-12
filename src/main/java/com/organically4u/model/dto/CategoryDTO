@@ -1,9 +1,9 @@
 package com.organically4u.model.dto;
 
 public class CategoryDTO {
-	String id_category;
-	String categoryName;
-	String categoryDescription;
+	private String id_category;
+	private String categoryName;
+	private String categoryDescription;
 	
 	
 	public String getId_category() {

@@ -18,7 +18,9 @@
 	import com.mongodb.BasicDBObject;
 	import com.mongodb.WriteResult;
 	import com.mongodb.gridfs.GridFSDBFile;
+	import com.organically4u.model.Categories;
 	import com.organically4u.model.Product;
+	import com.organically4u.model.dto.CategoryDTO;
 	import com.organically4u.model.dto.ProductDTO;
 	import com.organically4u.service.ProductService;
 	import com.organically4u.util.Converter;
@@ -75,11 +77,11 @@
 			
 			
 			@Override
-			public String addCategory(ProductDTO productDTO) {
+			public String addCategory(CategoryDTO categoryDTO) {
 				try {
-					Product product = (Product)converter.convert(Product.class, productDTO );
-					mongoTemplate.insert(product);
-					return product.getId_product();
+					Categories categories = (Categories)converter.convert(Categories.class, categoryDTO );
+					mongoTemplate.insert(categories);
+					return categories.getId_category();
 				}catch(Exception e) {
 					e.printStackTrace();
 					logger.error(e.toString());
@@ -215,9 +217,6 @@
 		}
 		
 	
-	
-	
-		
 		public GridFsTemplate getGridFsTemplate() {
 			return gridFsTemplate;
 		}

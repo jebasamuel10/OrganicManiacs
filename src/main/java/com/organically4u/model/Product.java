@@ -22,8 +22,8 @@ public class Product {
 	private String categoryName;
 	private String BrandName;
 	private String measuringUnit;
-	private Date expriyDate;
-	private Date mfdate;
+	//private Date expriyDate;
+	//private Date mfdate;
 	private List<SupportURLDTO> benifits;
 	private List<SupportURLDTO> recipe;
 	
@@ -119,20 +119,6 @@ public class Product {
 		BrandName = brandName;
 	}
 
-	public Date getExpriyDate() {
-		return expriyDate;
-	}
-
-	public void setExpriyDate(Date expriyDate) {
-		this.expriyDate = expriyDate;
-	}
-
-	public Date getMfdate() {
-		return mfdate;
-	}
-
-	public void setMfdate(Date mfdate) {
-		this.mfdate = mfdate;
-	}
+	
 }
 

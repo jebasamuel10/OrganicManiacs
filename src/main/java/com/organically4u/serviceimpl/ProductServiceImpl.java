@@ -18,10 +18,10 @@
 	import com.mongodb.BasicDBObject;
 	import com.mongodb.WriteResult;
 	import com.mongodb.gridfs.GridFSDBFile;
-	import com.organically4u.model.Categories;
-	import com.organically4u.model.Product;
-	import com.organically4u.model.dto.CategoryDTO;
-	import com.organically4u.model.dto.ProductDTO;
+import com.organically4u.model.Categories;
+import com.organically4u.model.Product;
+import com.organically4u.model.dto.CategoryDTO;
+import com.organically4u.model.dto.ProductDTO;
 	import com.organically4u.service.ProductService;
 	import com.organically4u.util.Converter;
 	
@@ -169,14 +169,42 @@
 			}
 			return productDTOlist;
 		}
-	
+		
 		@Override
-		public List<ProductDTO> getAllCategories() {
-			// TODO Auto-generated method stub
-			return null;
+		public List<String> getAllProductName(){
+			
+			List<Product> productlist = new ArrayList<Product>();
+			List<String> productNameList = new ArrayList<String>();
+			productlist.addAll(mongoTemplate.findAll(Product.class));
+			for(Product product :productlist){
+				productNameList.add(product.getProductName());
+			}
+			return productNameList;
 		}
 	
+		@Override
+		public List<CategoryDTO> getAllCategories() {
+			List<Categories> categorylist = new ArrayList<Categories>();
+			List<CategoryDTO> categoryDTOlist = new ArrayList<CategoryDTO>();
+			categorylist.addAll(mongoTemplate.findAll(Categories.class));
+			for(Categories category :categorylist){
+				categoryDTOlist.add((CategoryDTO)converter.convert(CategoryDTO.class, category ));
+			}
+			return categoryDTOlist;
+		}
 	
+		@Override
+		public List<String> getAllCategoryName() {
+			List<Categories> categorylist = new ArrayList<Categories>();
+			List<String> categoryDTONamelist = new ArrayList<String>();
+			categorylist.addAll(mongoTemplate.findAll(Categories.class));
+			for(Categories category :categorylist){
+				categoryDTONamelist.add(category.getCategoryName());
+			}
+			return categoryDTONamelist;
+		}
+		
+		
 		@Override
 		public List<ProductDTO> getAllSrcfroms() {
 			// TODO Auto-generated method stub
@@ -217,6 +245,9 @@
 		}
 		
 	
+	
+	
+		
 		public GridFsTemplate getGridFsTemplate() {
 			return gridFsTemplate;
 		}

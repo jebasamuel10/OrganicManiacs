@@ -31,7 +31,9 @@ public interface ProductService {
 
 	
 	public List<ProductDTO> getAllProducts();
-	public List<ProductDTO> getAllCategories();
+	public List<String> getAllProductName();
+	public List<CategoryDTO> getAllCategories();
+	public List<String> getAllCategoryName();
 	public List<ProductDTO> getAllSrcfroms();
 	
 	public Product getProduct(String id);
@@ -44,4 +46,3 @@ public interface ProductService {
 	public GridFSDBFile retrieveProductImage() throws FileNotFoundException;
 	
 }
-

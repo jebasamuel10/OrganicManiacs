@@ -1,7 +1,5 @@
 package com.organically4u.model.dto;
 
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class ProductDTO {
@@ -16,8 +14,8 @@ public class ProductDTO {
 	private String categoryName;
 	private String BrandName;
 	private String measuringUnit;
-	private Date expriyDate;
-	private Date mfdate;
+	//private Date expriyDate;
+	//private Date mfdate;
 	private List<SupportURLDTO> benifits;
 	private List<SupportURLDTO> recipe;
 
@@ -113,21 +111,7 @@ public class ProductDTO {
 		BrandName = brandName;
 	}
 
-	public Date getExpriyDate() {
-		return expriyDate;
-	}
-
-	public void setExpriyDate(Date expriyDate) {
-		this.expriyDate = expriyDate;
-	}
-
-	public Date getMfdate() {
-		return mfdate;
-	}
-
-	public void setMfdate(Date mfdate) {
-		this.mfdate = mfdate;
-	}
+	
 	
 
 	public ProductDTO(String id, String productName, String prodShotDesc, String prodLongDesc) {
@@ -147,7 +131,7 @@ public class ProductDTO {
 	public String toString() {
 		return "ProductDTO [Id=" + Id_product + ", productName=" + productName + ", prodShotDesc=" + shortDesc
 				+ ", prodLongDesc=" + prodLongDesc + ", BrandName=" + BrandName + ", categoryName=" + categoryName 
-				+", measuringUnit=" + measuringUnit + ", expriyDate=" + expriyDate + ", mfdate=" + mfdate +  ", benifits=" + benifits +  ", recipe=" + recipe +  "]";
+				+", measuringUnit=" + measuringUnit +   ", benifits=" + benifits +  ", recipe=" + recipe +  "]";
 	}
 	
 	

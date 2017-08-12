@@ -44,7 +44,7 @@ public class EnquiryResource {
 	@RequestMapping(value="/AllProductName",method={RequestMethod.GET})
 	@ResponseBody
 	public ResponseEntity<List<String>> getAllProductName() throws ProductException{
-		log.debug("getAllProudctName");
+		log.debug("getAllProudctNames");
 		return new ResponseEntity<List<String>>(productService.getAllProductName(), HttpStatus.OK);
 	}
 	
@@ -56,7 +56,7 @@ public class EnquiryResource {
 		return new ResponseEntity<List<CategoryDTO>>(productService.getAllCategories(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/AllCategoriesName",method={RequestMethod.GET})
+	@RequestMapping(value="/AllCategoryNames",method={RequestMethod.GET})
 	@ResponseBody
 	public ResponseEntity<List<String>> getAllCategoryName() throws ProductException{
 		log.debug("getAllProudct");

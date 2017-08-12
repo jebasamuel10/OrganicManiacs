@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
 import com.organically4u.service.ProductService;
 
@@ -53,9 +54,9 @@ public class PostingAdminResource {
 	
 	//Category CRUD Operations -Start
 	@RequestMapping(value="/addCategory",consumes="application/json")
-	public String addCategory(@RequestBody ProductDTO productDTO){
-		log.debug("Add:"+productDTO.toString());
-		return productService.addProduct(productDTO);
+	public String addCategory(@RequestBody CategoryDTO categoryDTO){
+		log.debug("Add:"+categoryDTO.toString());
+		return productService.addCategory(categoryDTO);
 	}
 	
 	@RequestMapping(value="/deleteCategory",method={RequestMethod.GET})
@@ -107,7 +108,5 @@ public class PostingAdminResource {
 			return null;
 		}
 	}
-	
-	
 	
 }

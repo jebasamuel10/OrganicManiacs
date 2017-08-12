@@ -18,10 +18,10 @@
 	import com.mongodb.BasicDBObject;
 	import com.mongodb.WriteResult;
 	import com.mongodb.gridfs.GridFSDBFile;
-import com.organically4u.model.Categories;
-import com.organically4u.model.Product;
-import com.organically4u.model.dto.CategoryDTO;
-import com.organically4u.model.dto.ProductDTO;
+	import com.organically4u.model.Categories;
+	import com.organically4u.model.Product;
+	import com.organically4u.model.dto.CategoryDTO;
+	import com.organically4u.model.dto.ProductDTO;
 	import com.organically4u.service.ProductService;
 	import com.organically4u.util.Converter;
 	
@@ -98,10 +98,10 @@ import com.organically4u.model.dto.ProductDTO;
 	
 			@Override
 			public String deleteCategory(String id) {
-				// TODO Auto-generated method stub
-				return null;
+				WriteResult writeResult = mongoTemplate.remove(getCategory(id));
+				return writeResult.wasAcknowledged() ? id : null;
 			}
-			
+		
 			
 			@Override
 			public String addSourceFrom(ProductDTO productDTO) {
@@ -204,6 +204,13 @@ import com.organically4u.model.dto.ProductDTO;
 			return categoryDTONamelist;
 		}
 		
+		@Override
+		public Categories getCategory(String id) {
+			Query query = new Query();
+			query.addCriteria(Criteria.where("_id").is(id));
+			return mongoTemplate.findOne(query,Categories.class);
+		}
+		
 		
 		@Override
 		public List<ProductDTO> getAllSrcfroms() {
@@ -266,6 +273,8 @@ import com.organically4u.model.dto.ProductDTO;
 		public void setMongoTemplate(MongoTemplate mongoTemplate) {
 			this.mongoTemplate = mongoTemplate;
 		}
-		
+
+
+	
 	
 	}

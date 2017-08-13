@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SourceFrom {
 
 	@Id
-	private Long id_srcfrom;
+	private String id_srcfrom;
 	private String gender;
 	private String nickname;
 	private String company;
@@ -17,11 +17,11 @@ public class SourceFrom {
 	public SourceFrom(){
 	}
 
-	public Long getId_srcfrom() {
+	public String getId_srcfrom() {
 		return id_srcfrom;
 	}
 
-	public void setId_srcfrom(Long id_srcfrom) {
+	public void setId_srcfrom(String id_srcfrom) {
 		this.id_srcfrom = id_srcfrom;
 	}
 

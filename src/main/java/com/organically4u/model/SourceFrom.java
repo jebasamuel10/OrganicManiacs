@@ -10,7 +10,7 @@ public class SourceFrom {
 
 	@Id
 	private String id_srcFrom;
-	private ImageDetail srcFromImg;
+	private ImageDetailDTO srcFromImg;
 	private String srcFromName;
 	private String srcFromdistrict;
 	private String srcFromphNo;

@@ -2,67 +2,66 @@ package com.organically4u.model.dto;
 
 import java.util.List;
 
-import com.organically4u.model.ImageDetail;
 
 public class SourceFromDTO {
 
-	private String id_srcFrom;
-	private ImageDetail srcFromImg;
-	private String srcFromName;
-	private String srcFromdistrict;
-	private String srcFromphNo;
-	private String srcFromaddress;
+	private String id;
+	private ImageDetailDTO img;
+	private String name;
+	private String district;
+	private String phNo;
+	private String address;
 	private List<String> productList;
 
 	public SourceFromDTO(){
 	}
 
-	public String getId_srcFrom() {
-		return id_srcFrom;
+	public String getId() {
+		return id;
 	}
 
-	public void setId_srcFrom(String id_srcFrom) {
-		this.id_srcFrom = id_srcFrom;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public ImageDetail getSrcFromImg() {
-		return srcFromImg;
+	public ImageDetailDTO getImg() {
+		return img;
 	}
 
-	public void setSrcFromImg(ImageDetail srcFromImg) {
-		this.srcFromImg = srcFromImg;
+	public void setImg(ImageDetailDTO img) {
+		this.img = img;
 	}
 
-	public String getSrcFromName() {
-		return srcFromName;
+	public String getName() {
+		return name;
 	}
 
-	public void setSrcFromName(String srcFromName) {
-		this.srcFromName = srcFromName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSrcFromdistrict() {
-		return srcFromdistrict;
+	public String getDistrict() {
+		return district;
 	}
 
-	public void setSrcFromdistrict(String srcFromdistrict) {
-		this.srcFromdistrict = srcFromdistrict;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
-	public String getSrcFromphNo() {
-		return srcFromphNo;
+	public String getPhNo() {
+		return phNo;
 	}
 
-	public void setSrcFromphNo(String srcFromphNo) {
-		this.srcFromphNo = srcFromphNo;
+	public void setPhNo(String phNo) {
+		this.phNo = phNo;
 	}
 
-	public String getSrcFromaddress() {
-		return srcFromaddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setSrcFromaddress(String srcFromaddress) {
-		this.srcFromaddress = srcFromaddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<String> getProductList() {
@@ -75,9 +74,8 @@ public class SourceFromDTO {
 
 	@Override
 	public String toString() {
-		return "SourceFromDTO [id_srcFrom=" + id_srcFrom + ", srcFromImg=" + srcFromImg + ", srcFromName=" + srcFromName
-				+ ", srcFromdistrict=" + srcFromdistrict + ", srcFromphNo=" + srcFromphNo + ", srcFromaddress="
-				+ srcFromaddress + ", productList=" + productList + "]";
+		return "SourceFromDTO [id=" + id + ", img=" + img + ", name=" + name + ", district=" + district + ", phNo="
+				+ phNo + ", address=" + address + ", productList=" + productList + "]";
 	}
 
 	

@@ -1,14 +1,11 @@
-package com.organically4u.model;
+package com.organically4u.model.dto;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.organically4u.model.ImageDetail;
 
-@Document
-public class SourceFrom {
+public class SourceFromDTO {
 
-	@Id
 	private String id_srcFrom;
 	private ImageDetailDTO srcFromImg;
 	private String srcFromName;
@@ -16,8 +13,8 @@ public class SourceFrom {
 	private String srcFromphNo;
 	private String srcFromaddress;
 	private List<String> productList;
-	
-	public SourceFrom(){
+
+	public SourceFromDTO(){
 	}
 
 	public String getId_srcFrom() {
@@ -28,11 +25,11 @@ public class SourceFrom {
 		this.id_srcFrom = id_srcFrom;
 	}
 
-	public ImageDetail getSrcFromImg() {
+	public ImageDetailDTO getSrcFromImg() {
 		return srcFromImg;
 	}
 
-	public void setSrcFromImg(ImageDetail srcFromImg) {
+	public void setSrcFromImg(ImageDetailDTO srcFromImg) {
 		this.srcFromImg = srcFromImg;
 	}
 
@@ -74,6 +71,13 @@ public class SourceFrom {
 
 	public void setProductList(List<String> productList) {
 		this.productList = productList;
+	}
+
+	@Override
+	public String toString() {
+		return "SourceFromDTO [id_srcFrom=" + id_srcFrom + ", srcFromImg=" + srcFromImg + ", srcFromName=" + srcFromName
+				+ ", srcFromdistrict=" + srcFromdistrict + ", srcFromphNo=" + srcFromphNo + ", srcFromaddress="
+				+ srcFromaddress + ", productList=" + productList + "]";
 	}
 
 	

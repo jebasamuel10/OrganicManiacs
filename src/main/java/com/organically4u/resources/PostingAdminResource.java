@@ -103,9 +103,9 @@ public class PostingAdminResource {
 
 	//Stock CRUD Operations -Start
 	@RequestMapping(value="/addStock",consumes="application/json")
-	public String addStock(@RequestBody StockDTO stockDTO, int counter){
-		log.debug("Add: Stock"+stockDTO.toString() + "Counter : "  +counter);
-		return transactinService.addStock(stockDTO, counter);
+	public String addStock(@RequestBody StockDTO stockDTO){
+		log.debug("Add: Stock"+stockDTO.toString() );
+		return transactinService.addStock(stockDTO);
 	}
 	
 	

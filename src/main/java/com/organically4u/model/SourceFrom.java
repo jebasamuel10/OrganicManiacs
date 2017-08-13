@@ -1,5 +1,7 @@
 package com.organically4u.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,64 +9,72 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SourceFrom {
 
 	@Id
-	private String id_srcfrom;
-	private String gender;
-	private String nickname;
-	private String company;
-	private String contact_No;
-	private String city;
+	private String id_srcFrom;
+	private ImageDetail srcFromImg;
+	private String srcFromName;
+	private String srcFromdistrict;
+	private String srcFromphNo;
+	private String srcFromaddress;
+	private List<String> productList;
 	
 	public SourceFrom(){
 	}
 
-	public String getId_srcfrom() {
-		return id_srcfrom;
+	public String getId_srcFrom() {
+		return id_srcFrom;
 	}
 
-	public void setId_srcfrom(String id_srcfrom) {
-		this.id_srcfrom = id_srcfrom;
+	public void setId_srcFrom(String id_srcFrom) {
+		this.id_srcFrom = id_srcFrom;
 	}
 
-	public String getGender() {
-		return gender;
+	public ImageDetail getSrcFromImg() {
+		return srcFromImg;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setSrcFromImg(ImageDetail srcFromImg) {
+		this.srcFromImg = srcFromImg;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getSrcFromName() {
+		return srcFromName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setSrcFromName(String srcFromName) {
+		this.srcFromName = srcFromName;
 	}
 
-	public String getCompany() {
-		return company;
+	public String getSrcFromdistrict() {
+		return srcFromdistrict;
 	}
 
-	public void setCompany(String company) {
-		this.company = company;
+	public void setSrcFromdistrict(String srcFromdistrict) {
+		this.srcFromdistrict = srcFromdistrict;
 	}
 
-	public String getContact_No() {
-		return contact_No;
+	public String getSrcFromphNo() {
+		return srcFromphNo;
 	}
 
-	public void setContact_No(String contact_No) {
-		this.contact_No = contact_No;
+	public void setSrcFromphNo(String srcFromphNo) {
+		this.srcFromphNo = srcFromphNo;
 	}
 
-	public String getCity() {
-		return city;
+	public String getSrcFromaddress() {
+		return srcFromaddress;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setSrcFromaddress(String srcFromaddress) {
+		this.srcFromaddress = srcFromaddress;
 	}
-	
-	
+
+	public List<String> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<String> productList) {
+		this.productList = productList;
+	}
+
 	
 }

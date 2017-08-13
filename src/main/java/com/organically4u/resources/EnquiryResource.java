@@ -19,9 +19,9 @@ import com.mongodb.gridfs.GridFSDBFile;
 import com.organically4u.exception.ProductException;
 import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
+import com.organically4u.model.dto.SourceFromDTO;
 import com.organically4u.service.ProductService;
 
-import groovy.util.logging.Log;
 import groovy.util.logging.Slf4j;
 
 @Slf4j
@@ -61,6 +61,22 @@ public class EnquiryResource {
 	public ResponseEntity<List<String>> getAllCategoryName() throws ProductException{
 		log.debug("getAllProudct");
 		return new ResponseEntity<List<String>>(productService.getAllCategoryName(), HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value="/AllSrcfroms",method={RequestMethod.GET})
+	@ResponseBody
+	public ResponseEntity<List<SourceFromDTO>> getAllSrcfroms() throws ProductException{
+		log.debug("getAllSrcfroms");
+		return new ResponseEntity<List<SourceFromDTO>>(productService.getAllSrcfroms(), HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value="/AllSourceFromNames",method={RequestMethod.GET})
+	@ResponseBody
+	public ResponseEntity<List<String>> getAllSourceFromNames() throws ProductException{
+		log.debug("getAllSrcfromNames");
+		return new ResponseEntity<List<String>>(productService.getAllSrcfromNames(), HttpStatus.OK);
 	}
 	
 	@ResponseBody

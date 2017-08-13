@@ -6,7 +6,7 @@ import com.organically4u.model.dto.StockDTO;
 
 public interface TransactionService {
 
-	public String addStock(StockDTO stockDTO,int count);
+	public String addStock(StockDTO stockDTO);
 	public List<StockDTO> getAllStocks();
 	
 }

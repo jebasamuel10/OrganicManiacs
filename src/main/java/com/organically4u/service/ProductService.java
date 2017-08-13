@@ -6,8 +6,10 @@ import java.util.List;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.organically4u.model.Categories;
 import com.organically4u.model.Product;
+import com.organically4u.model.SourceFrom;
 import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
+import com.organically4u.model.dto.SourceFromDTO;
 
 public interface ProductService {
 	
@@ -20,7 +22,7 @@ public interface ProductService {
 	public String deleteCategory(String id);
 	public String updateCategory(String id);
 	
-	public String addSourceFrom(ProductDTO productDTO);
+	public String addSourceFrom(SourceFromDTO sourceFromDTO);
 	public String delteSourceFrom(String id);
 	public String updateSourceFrom(String id);
 	
@@ -35,13 +37,12 @@ public interface ProductService {
 	public List<String> getAllProductName();
 	public List<CategoryDTO> getAllCategories();
 	public List<String> getAllCategoryName();
-	public List<ProductDTO> getAllSrcfroms();
-	
+	public List<SourceFromDTO> getAllSrcfroms();
+	public List<String> getAllSrcfromNames();
 	public Product getProduct(String id);
 	public Categories getCategory(String id);
-	public ProductDTO getSrcfrom();
-	public ProductDTO getCategories();
-	
+	public SourceFrom getSrcFrom(String id);
+
 	
 	//methods to get and store an image
 	public String storeProductImage() throws FileNotFoundException;

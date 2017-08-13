@@ -20,7 +20,9 @@ import com.organically4u.exception.ProductException;
 import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
 import com.organically4u.model.dto.SourceFromDTO;
+import com.organically4u.model.dto.StockDTO;
 import com.organically4u.service.ProductService;
+import com.organically4u.service.TransactionService;
 
 import groovy.util.logging.Slf4j;
 
@@ -31,6 +33,9 @@ public class EnquiryResource {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	TransactionService transService;
 	
 	private static Logger log = LoggerFactory.getLogger(EnquiryResource.class);
 	
@@ -78,6 +83,15 @@ public class EnquiryResource {
 		log.debug("getAllSrcfromNames");
 		return new ResponseEntity<List<String>>(productService.getAllSrcfromNames(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/AllStocks",method={RequestMethod.GET})
+	@ResponseBody
+	public ResponseEntity<List<StockDTO>> getAllStocks() throws ProductException{
+		log.debug("AllStocks");
+		return new ResponseEntity<List<StockDTO>>(transService.getAllStocks(), HttpStatus.OK);
+	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/getImage", method = RequestMethod.GET)

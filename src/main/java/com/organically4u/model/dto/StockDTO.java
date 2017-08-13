@@ -15,7 +15,8 @@ public class StockDTO implements Serializable {
 	private Date receivedDate;
 	private Date expireDate;
 	private String scale;
-	private int nos;
+	private int counter;
+	
 	public String getProductId() {
 		return ProductId;
 	}
@@ -70,14 +71,15 @@ public class StockDTO implements Serializable {
 	public void setScale(String scale) {
 		this.scale = scale;
 	}
-	public int getNos() {
-		return nos;
-	}
-	public void setNos(int nos) {
-		this.nos = nos;
-	}
 	
 	
+	
+	public int getCounter() {
+		return counter;
+	}
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 	public String getId_stock() {
 		return Id_stock;
 	}
@@ -88,8 +90,8 @@ public class StockDTO implements Serializable {
 	public String toString() {
 		return "StockDTO [Id_stock=" + Id_stock + ", ProductId=" + ProductId + ", measuringUnit=" + measuringUnit
 				+ ", scaleLst=" + scaleLst + ", mrp=" + mrp + ", ourPrice=" + ourPrice + ", packedDate=" + packedDate
-				+ ", receivedDate=" + receivedDate + ", expireDate=" + expireDate + ", scale=" + scale + ", nos=" + nos
-				+ "]";
+				+ ", receivedDate=" + receivedDate + ", expireDate=" + expireDate + ", scale=" + scale + ", counter="
+				+ counter + "]";
 	}
 
 	

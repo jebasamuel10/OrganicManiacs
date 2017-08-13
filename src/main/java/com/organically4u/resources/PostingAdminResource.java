@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
+import com.organically4u.model.dto.SourceFromDTO;
 import com.organically4u.service.ProductService;
 
 
@@ -77,9 +78,9 @@ public class PostingAdminResource {
 	
 	//SourceFrom CRUD Operations -Start
 	@RequestMapping(value="/addSrcFrom",consumes="application/json")
-	public String addSourceFrom(@RequestBody ProductDTO productDTO){
-		log.debug("Add:"+productDTO.toString());
-		return productService.addProduct(productDTO);
+	public String addSourceFrom(@RequestBody SourceFromDTO srcFromDTO){
+		log.debug("Add:"+srcFromDTO.toString());
+		return productService.addSourceFrom(srcFromDTO);
 	}
 	
 	@RequestMapping(value="/deleteSrcFrom",method={RequestMethod.GET})

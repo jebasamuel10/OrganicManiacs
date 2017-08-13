@@ -34,10 +34,10 @@ public class TransactionServiceImpl implements TransactionService{
 	private Converter converter;
 	
 	@Override
-	public String addStock(StockDTO stockDTO, int count) {
+	public String addStock(StockDTO stockDTO) {
 		// TODO Auto-generated method stub
 		try {
-			for(int i =0;i<count;i++){
+			for(int i =0;i<stockDTO.getCounter();i++){
 				Stock stock = (Stock)converter.convert(Stock.class, stockDTO );
 				mongoTemplate.insert(stock);
 			}

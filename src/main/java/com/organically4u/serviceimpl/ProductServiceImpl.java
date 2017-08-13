@@ -20,8 +20,10 @@
 	import com.mongodb.gridfs.GridFSDBFile;
 	import com.organically4u.model.Categories;
 	import com.organically4u.model.Product;
+	import com.organically4u.model.SourceFrom;
 	import com.organically4u.model.dto.CategoryDTO;
 	import com.organically4u.model.dto.ProductDTO;
+	import com.organically4u.model.dto.SourceFromDTO;
 	import com.organically4u.service.ProductService;
 	import com.organically4u.util.Converter;
 	
@@ -103,12 +105,13 @@
 			}
 		
 			
+			
 			@Override
-			public String addSourceFrom(ProductDTO productDTO) {
+			public String addSourceFrom(SourceFromDTO sourceFromDTO) {
 				try {
-					Product product = (Product)converter.convert(Product.class, productDTO );
-					mongoTemplate.insert(product);
-					return product.getId_product();
+					SourceFrom srcfrom = (SourceFrom)converter.convert(SourceFrom.class, sourceFromDTO );
+					mongoTemplate.insert(srcfrom);
+					return srcfrom.getId_srcFrom();
 				}catch(Exception e) {
 					e.printStackTrace();
 					logger.error(e.toString());
@@ -193,6 +196,7 @@
 			return categoryDTOlist;
 		}
 	
+	
 		@Override
 		public List<String> getAllCategoryName() {
 			List<Categories> categorylist = new ArrayList<Categories>();
@@ -213,24 +217,38 @@
 		
 		
 		@Override
-		public List<ProductDTO> getAllSrcfroms() {
-			// TODO Auto-generated method stub
-			return null;
+		public List<SourceFromDTO> getAllSrcfroms() {
+			List<SourceFrom> SourceFromlist = new ArrayList<SourceFrom>();
+			List<SourceFromDTO> SourceFromDTOlist = new ArrayList<SourceFromDTO>();
+			SourceFromlist.addAll(mongoTemplate.findAll(SourceFrom.class));
+			for(SourceFrom srcfrm :SourceFromlist){
+				SourceFromDTOlist.add((SourceFromDTO)converter.convert(SourceFromDTO.class, srcfrm ));
+			}
+			return SourceFromDTOlist;
 		}
-	
+		
+		@Override
+		public List<String> getAllSrcfromNames() {
+			List<SourceFrom> SourceFromlist = new ArrayList<SourceFrom>();
+			List<String> SourceFromName = new ArrayList<String>();
+			SourceFromlist.addAll(mongoTemplate.findAll(SourceFrom.class));
+			for(SourceFrom srcfrm :SourceFromlist){
+				SourceFromName.add(srcfrm.getId_srcFrom());
+			}
+			return SourceFromName;
+		}
+
+
 	
 		@Override
-		public ProductDTO getSrcfrom() {
-			// TODO Auto-generated method stub
-			return null;
+		public SourceFrom getSrcFrom(String id) {
+			Query query = new Query();
+			query.addCriteria(Criteria.where("_id").is(id));
+			return mongoTemplate.findOne(query,SourceFrom.class);
 		}
+		
 	
 	
-		@Override
-		public ProductDTO getCategories() {
-			// TODO Auto-generated method stub
-			return null;
-		}
 		
 		@Override
 		public Product getProduct(String id){
@@ -273,8 +291,5 @@
 		public void setMongoTemplate(MongoTemplate mongoTemplate) {
 			this.mongoTemplate = mongoTemplate;
 		}
-
-
-	
 	
 	}

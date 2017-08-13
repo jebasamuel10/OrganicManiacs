@@ -21,7 +21,8 @@ public class Stock implements Serializable {
 	private Date receivedDate;
 	private Date expireDate;
 	private String scale;
-	private int nos;
+	private int counter;
+	
 	
 	
 	public String getId_stock() {
@@ -84,13 +85,14 @@ public class Stock implements Serializable {
 	public void setScale(String scale) {
 		this.scale = scale;
 	}
-	public int getNos() {
-		return nos;
-	}
-	public void setNos(int nos) {
-		this.nos = nos;
-	}
 
+
+	public int getCounter() {
+		return counter;
+	}
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 	public Stock(){
 		
 	}

@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.organically4u.model.dto.CategoryDTO;
 import com.organically4u.model.dto.ProductDTO;
 import com.organically4u.model.dto.SourceFromDTO;
+import com.organically4u.model.dto.StockDTO;
 import com.organically4u.service.ProductService;
-
+import com.organically4u.service.TransactionService;
 
 import groovy.util.logging.Slf4j;
 
@@ -29,6 +29,9 @@ public class PostingAdminResource {
 	
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	TransactionService transactinService;
 	
 	
 	//Product CRUD Operations -Start
@@ -98,6 +101,14 @@ public class PostingAdminResource {
 	//SourceFrom CRUD Operations -End
 
 
+	//Stock CRUD Operations -Start
+	@RequestMapping(value="/addStock",consumes="application/json")
+	public String addStock(@RequestBody StockDTO stockDTO, int counter){
+		log.debug("Add: Stock"+stockDTO.toString() + "Counter : "  +counter);
+		return transactinService.addStock(stockDTO, counter);
+	}
+	
+	
 	
 	@RequestMapping(value="/storeImage",method={RequestMethod.GET})
 	public String storeImage(){

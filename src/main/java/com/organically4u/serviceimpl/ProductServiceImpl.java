@@ -111,7 +111,7 @@
 				try {
 					SourceFrom srcfrom = (SourceFrom)converter.convert(SourceFrom.class, sourceFromDTO );
 					mongoTemplate.insert(srcfrom);
-					return srcfrom.getId_srcFrom();
+					return srcfrom.getId();
 				}catch(Exception e) {
 					e.printStackTrace();
 					logger.error(e.toString());
@@ -233,7 +233,7 @@
 			List<String> SourceFromName = new ArrayList<String>();
 			SourceFromlist.addAll(mongoTemplate.findAll(SourceFrom.class));
 			for(SourceFrom srcfrm :SourceFromlist){
-				SourceFromName.add(srcfrm.getId_srcFrom());
+				SourceFromName.add(srcfrm.getId());
 			}
 			return SourceFromName;
 		}

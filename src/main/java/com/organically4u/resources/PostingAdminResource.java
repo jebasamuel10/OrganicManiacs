@@ -2,6 +2,8 @@ package com.organically4u.resources;
 
 import java.io.FileNotFoundException;
 
+import javax.websocket.server.PathParam;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,16 +43,16 @@ public class PostingAdminResource {
 		return productService.addProduct(productDTO);
 	}
 	
-	@RequestMapping(value="/deleteProduct",method={RequestMethod.GET})
+	@RequestMapping(value="/deleteProduct",method={RequestMethod.DELETE})
 	public String deleteProduct(@RequestParam String id){
 	log.debug("Delete prod:"+id);
 	return productService.deleteProduct(id);
 	}
 	
 	
-	@RequestMapping(value="/updateProdDtl",consumes="application/json")
+	@RequestMapping(value="/updateProdDtl",consumes="application/json",method={RequestMethod.PUT})
 	public String updateProductDetails(@RequestBody ProductDTO productDTO){
-		log.debug("Add:"+productDTO.toString());
+		log.debug("Update:"+productDTO.toString());
 		return productService.addProduct(productDTO);
 	}
 	
@@ -102,10 +104,10 @@ public class PostingAdminResource {
 
 
 	//Stock CRUD Operations -Start
-	@RequestMapping(value="/addStock",consumes="application/json")
-	public String addStock(@RequestBody StockDTO stockDTO){
-		log.debug("Add: Stock"+stockDTO.toString() );
-		return transactinService.addStock(stockDTO);
+	@RequestMapping(value="/addStock/{count}",consumes="application/json")
+	public String addStock(@RequestBody StockDTO stockDTO, @PathParam(value = "count") int count){
+		log.debug("Add: Stock"+stockDTO.toString() +"count :"+count );
+		return transactinService.addStock(stockDTO,count);
 	}
 	
 	

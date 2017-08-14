@@ -12,6 +12,7 @@
 	import org.springframework.data.mongodb.core.MongoTemplate;
 	import org.springframework.data.mongodb.core.query.Criteria;
 	import org.springframework.data.mongodb.core.query.Query;
+	import org.springframework.data.mongodb.core.query.Update;
 	import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 	import org.springframework.stereotype.Service;
 	
@@ -24,6 +25,7 @@
 	import com.organically4u.model.dto.CategoryDTO;
 	import com.organically4u.model.dto.ProductDTO;
 	import com.organically4u.model.dto.SourceFromDTO;
+	import com.organically4u.model.dto.SupportURLDTO;
 	import com.organically4u.service.ProductService;
 	import com.organically4u.util.Converter;
 	
@@ -65,8 +67,20 @@
 	
 			@Override
 			public String updateProductDetails(ProductDTO productDTO) {
+				
+				Product product = (Product)converter.convert(Product.class, productDTO );
+				Query searchUserQuery = new Query(Criteria.where("productName").is(product.getProductName()));
+				Update update = new Update();
+				update.set("prodLongDesc",product.getProdLongDesc() );
+				update.set("shortDesc", product.getShortDesc());
+				update.set("categoryName", product.getCategoryName());
+				update.set("BrandName", product.getBrandName());
+				update.set("measuringUnit", product.getMeasuringUnit());
+				update.set("benifits", product.getBenifits());
+				update.set("recipe", product.getRecipe());
+				mongoTemplate.updateFirst(searchUserQuery, update, Product.class);
 				// TODO Auto-generated method stub
-				return null;
+				return product.getId_product();
 			}
 			
 			
